@@ -50,11 +50,6 @@ contract Todo {
         return todo_item;
     }
 
-    // function deleteTask()external {
-
-    // }
-
-
  // utils
 function getItemIndex(Task[] memory myarr,uint _id)public  pure   returns (uint) {
     uint index_of_item;
