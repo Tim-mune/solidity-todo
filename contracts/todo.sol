@@ -15,7 +15,7 @@ contract Todo {
     }
 
     mapping (uint256=>Task)public tasks;
-    uint task_count=0;
+    uint public task_count=0;
     modifier onlyOwner(){
         require(msg.sender==owner,"only owner can perform this operation");
         _;
@@ -44,7 +44,17 @@ contract Todo {
         todo_item.status=task_status.done;
         return todo_item;
     }
-    
+
+    function getSingleTask(uint _id)external view returns (Task memory) {
+        Task memory todo_item=total_tasks[getItemIndex(total_tasks, _id)];
+        return todo_item;
+    }
+
+    // function deleteTask()external {
+
+    // }
+
+
  // utils
 function getItemIndex(Task[] memory myarr,uint _id)public  pure   returns (uint) {
     uint index_of_item;
@@ -55,7 +65,6 @@ for (uint i; i<myarr.length; i++){
 }
 return index_of_item;
  }
-
-   
-  
 }
+
+
