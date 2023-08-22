@@ -1,21 +1,12 @@
 "use client";
-import { getInstance } from "../../../ethereum/todo";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Web3 } from "web3";
 const page = () => {
-  const instance = getInstance();
-  const getTasks = async () => {
-    const res = await instance;
-    console.log(res);
-  };
   useEffect(() => {
-    getTasks();
-    console.log(getInstance);
+    console.log("use effect is working");
+    console.log(Web3);
   }, []);
-  return (
-    <div>
-      <h1>tasks go here</h1>
-    </div>
-  );
+  return <div>page</div>;
 };
 
 export default page;
