@@ -20,7 +20,7 @@ contract Todo {
         require(msg.sender==owner,"only owner can perform this operation");
         _;
     }
-
+event taskadded(uint tasks, Task[] task);
     Task[] private  total_tasks;
     Task[] private  completed_tasks;
     Task[] private  pending_tasks;
@@ -33,9 +33,12 @@ contract Todo {
         pending_tasks.push(newtask);
         total_tasks.push(newtask);   
         task_count++;
+        emit taskadded(task_count, total_tasks);
     }
 
-    function getTasks()external view  returns (Task[] memory) {
+    function getTasks()external returns (Task[] memory) {
+
+        emit taskadded(task_count, total_tasks);
         return total_tasks;
     }
 
@@ -49,6 +52,11 @@ contract Todo {
         Task memory todo_item=total_tasks[getItemIndex(total_tasks, _id)];
         return todo_item;
     }
+
+    // function deleteTask()external {
+
+    // }
+
 
  // utils
 function getItemIndex(Task[] memory myarr,uint _id)public  pure   returns (uint) {
