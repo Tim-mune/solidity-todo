@@ -1,4 +1,5 @@
 import { AiOutlineBell, AiOutlineBars } from "react-icons/ai";
+
 const Nav = () => {
   return (
     <section className="flex flex-row items-center justify-between m-4">
